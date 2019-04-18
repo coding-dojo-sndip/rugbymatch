@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test
 
 class TeamTest {
     @Nested
-    @Disabled
     @DisplayName("Ex 1d: When a team")
     inner class ValidatingTeamTest {
 
