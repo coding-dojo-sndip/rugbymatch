@@ -19,7 +19,7 @@ data class Team (val players: List<Player>, val name: TeamName) {
      * wearing back numbers 1 until 15
      */
     val hasEnoughStartingPlayers : Boolean
-        get() = players.filter { it.isStarting }.size >= 15
+        get() = players.count { it.isStarting } >= 15
 
     /**
      * The captain, when present, should always where back number 7
