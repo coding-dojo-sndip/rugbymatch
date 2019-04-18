@@ -1,7 +1,7 @@
 package com.paulienvanalst.rugbymatch.team
 
-
-class Player(val position: Position, val backNumber: Int) {
-//todo to implement
-
+data class Player(val position: Position, val backNumber: Int) {
+    fun isStarting(): Boolean {
+        throw NotImplementedException()
+    }
 }

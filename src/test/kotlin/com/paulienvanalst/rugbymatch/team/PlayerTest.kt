@@ -1,6 +1,5 @@
 package com.paulienvanalst.rugbymatch.team
 
-import com.paulienvanalst.rugbymatch.oldfashioned.Player
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.notNullValue
@@ -13,7 +12,6 @@ import org.junit.jupiter.params.provider.ValueSource
 
 class PlayerTest {
     @Nested
-    @Disabled
     @DisplayName("Ex 1a and 1b: tests for checking Player Class after conversion to Kotlin")
     inner class PlayerClassTest {
         private val prop = Position.LOOSEHEAD_PROP
@@ -58,14 +56,14 @@ class PlayerTest {
         @ValueSource(ints = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
         fun `A player with back number is part of the starting squad` (backNumber: Int) {
             val playerWithPosition = Player(Position.CENTER, backNumber)
-            assertThat("Player with $backNumber should be part of starting squad", playerWithPosition.isStarting, `is`(true))
+            assertThat("Player with $backNumber should be part of starting squad", playerWithPosition.isStarting(), `is`(true))
         }
 
         @ParameterizedTest
         @ValueSource(ints = [16, 17, 18, 19, 20, 21, 22])
         fun `A player with back number is not part of the starting squad` (backNumber: Int) {
             val playerWithPosition = Player(Position.CENTER, backNumber)
-            assertThat("Player with $backNumber should not be part of starting squad", playerWithPosition.isStarting, `is`(false))
+            assertThat("Player with $backNumber should not be part of starting squad", playerWithPosition.isStarting(), `is`(false))
         }
     }
 }
