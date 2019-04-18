@@ -37,7 +37,8 @@ open class GameReporter (val scoringBoard: ScoringBoard) {
 
     @EventListener
     fun updatingReportAfterSetPiece(setPieceEvent: SetPieceEvent) {
-        throw NotImplementedException()
+        gameReport.addSetPieceEvents(setPieceEvent)
+
     }
 
 }
@@ -53,10 +54,12 @@ class GameReport (val hostingTeam : TeamName, val visitingTeam : TeamName) {
     private var halfTimeScores : GameScore = GameScore(hostingTeam to 0, visitingTeam to 0)
     private var endScores : GameScore = GameScore(hostingTeam to 0, visitingTeam to 0)
 
-
     fun addSetPieceEvents(setPieceEvent: SetPieceEvent) {
-        throw NotImplementedException()
-
+        setPieceEvents += setPieceEvent
+        when (setPieceEvent) {
+            is ScrumWasPlayed -> scrums += setPieceEvent.setPiece as Scrum
+            is LineOutWasPlayed -> lineOuts += setPieceEvent.setPiece as LineOut
+        }
     }
 
     fun setHalfTimeScore(gameScore: GameScore) {
