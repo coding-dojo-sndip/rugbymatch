@@ -25,7 +25,7 @@ data class Team (val players: List<Player>, val name: TeamName) {
      * The captain, when present, should always where back number 7
      */
     fun captainBackNumber(): Int? {
-        throw NotImplementedException()
+        return scrumhalf()!!.backNumber
     }
 
     /**
@@ -33,9 +33,11 @@ data class Team (val players: List<Player>, val name: TeamName) {
      * the captain is wearing the first back number we can find among the starting players.
      */
     fun replacingCaptainBackNumber(): Int? {
-        throw NotImplementedException()
+        return scrumhalf()?.backNumber ?: players.first { it.isStarting }.backNumber
     }
 
-
+    fun scrumhalf(): Player? {
+        return players.find { it.position == Position.SCRUM_HALF }
+    }
 }
 
